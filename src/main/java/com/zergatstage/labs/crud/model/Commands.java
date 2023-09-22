@@ -9,6 +9,7 @@ public class Commands {
     @Column(name = "command_id")
     private int id;
 
+    @Column(name = "command_name")
     private String commandName;
 
 }

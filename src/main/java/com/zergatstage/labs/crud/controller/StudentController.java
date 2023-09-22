@@ -20,8 +20,14 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-	
-	@GetMapping(value = {"/","/registration"})
+
+	@GetMapping(value = "/")
+	public String listing(Model model){
+		List<StudentDTO> studentList = studentService.getAllStudent();
+		model.addAttribute("studentList", studentList);
+		return "student-list";
+	}
+	@GetMapping(value = {"/registration"})
 	public String registration(Map<String, Object> model) {
 		model.put("student", new StudentDTO());
 		return "student-add-update";

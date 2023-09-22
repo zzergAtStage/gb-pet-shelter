@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "animal_id")
+@PrimaryKeyJoinColumn(name = "animalId")
 public class Dog extends PetAnimal{
     @Column(name = "bark_loudness")
     private double barkLoudness;

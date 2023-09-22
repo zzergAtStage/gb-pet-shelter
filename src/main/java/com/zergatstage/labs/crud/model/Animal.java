@@ -18,7 +18,8 @@ public abstract class Animal {
    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    private List<Commands> commands;
+   @ElementCollection
+   private List<Commands> commands;
     public List<Commands> getCommand() {
         return commands;
     }

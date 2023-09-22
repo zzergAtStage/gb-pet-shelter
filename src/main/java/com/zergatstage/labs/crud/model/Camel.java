@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "animal_id")
+@PrimaryKeyJoinColumn(name = "animalId")
 public class Camel extends PackAnimal{
     @Column(name = "hump_value")
     private int humpValue;
