@@ -3,13 +3,14 @@ package com.zergatstage.labs.crud.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Animal {
    @Id
-    protected Integer animal_id;
+    protected Integer animalId;
 
    @Column(name = "animal_name")
     private String animalName;
@@ -17,12 +18,22 @@ public abstract class Animal {
    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    public Integer getAnimal_id() {
-        return animal_id;
+    private List<Commands> commands;
+    public List<Commands> getCommand() {
+        return commands;
     }
 
-    public void setAnimal_id(Integer animal_id) {
-        this.animal_id = animal_id;
+    public void setCommand(List<Commands> commands) {
+        this.commands = commands;
+    }
+
+    //getter & setters
+    public Integer getAnimalId() {
+        return animalId;
+    }
+
+    public void setAnimalId(Integer animalId) {
+        this.animalId = animalId;
     }
 
     public String getAnimalName() {
