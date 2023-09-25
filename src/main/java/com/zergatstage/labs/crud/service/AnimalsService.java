@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface AnimalsService {
 
-	public void createOrUpdateAnimal(AnimalDTO animalDTO);
+	void createOrUpdateAnimal(AnimalDTO animalDTO);
 	
-	public List<AnimalDTO> getAllAnimal();
+	List<AnimalDTO> getAllAnimal();
 	
-	public void deleteAnimal(Long id);
+	void deleteAnimal(Long id);
 	
-	public AnimalDTO editAnimal(Long id);
+	AnimalDTO editAnimal(Long id);
 
-	public List<AnimalDTO> getAnimalsById(Long id);
+	List<AnimalDTO> getAnimalsById(Long id);
 }

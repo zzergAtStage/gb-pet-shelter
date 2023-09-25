@@ -6,11 +6,11 @@ import com.zergatstage.labs.crud.model.Commands;
 import java.util.List;
 
 public interface CommandService {
-    public void createOrUpdateCommand(Commands command);
+    void createOrUpdateCommand(Commands command);
 
-    public List<Animal> getAllCommand();
+    List<Animal> getAllCommand();
 
-    public void deleteCommand(Long id);
+    void deleteCommand(Long id);
 
-    public Animal editCommand(Long id);
+    Animal editCommand(Long id);
 }

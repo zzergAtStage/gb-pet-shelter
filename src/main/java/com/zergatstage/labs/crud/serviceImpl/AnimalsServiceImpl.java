@@ -58,32 +58,33 @@ public class AnimalsServiceImpl implements AnimalsService {
             throw new IllegalStateException("Unexpected value: " + animalDto.getAnimalClass());
         }
 
-
-		Animal animal = new Animal();
-		if (animalDto.getId() != null) {
-			animal.setId(animalDto.getId());
-		}
-		animal.setEmailId(animalDto.getEmailId());
-		animal.setFirstName(animalDto.getFirstName());
-		animal.setLastName(animalDto.getLastName());
+		//TODO change the constructor to factory
+		Animal animal = new Dog();
+//		if (animalDto.() != null) {
+//			animal.setId(animalDto.getId());
+//		}
+//		animal.setEmailId(animalDto.getEmailId());
+//		animal.setFirstName(animalDto.getFirstName());
+//		animal.setLastName(animalDto.getLastName());
 		return animal;
 	}
 	
 	private AnimalDTO convertModelToDTO(Animal animal) {
 		AnimalDTO animalDTO = new AnimalDTO();
-		animalDTO.setId(animal.getId());
-		animalDTO.setEmailId(animal.getEmailId());
-		animalDTO.setFirstName(animal.getFirstName());
-		animalDTO.setLastName(animal.getLastName());
+		//TODO implementation
+//		animalDTO.setId(animal.getId());
+//		animalDTO.setEmailId(animal.getEmailId());
+//		animalDTO.setFirstName(animal.getFirstName());
+//		animalDTO.setLastName(animal.getLastName());
 		return animalDTO;
 	}
 
 	public List<AnimalDTO> getAnimalsById(Long id) {
-		// Assuming animalRepository has a method to find a animal by id
+		// Assuming animalRepository has a method to find an animal by id
 		Optional<Animal> animalOptional = animalRepository.findById(id);
 
 		if (animalOptional.isPresent()) {
-			// If a animal with the given id exists, return it as a single-element list
+			// If an animal with the given id exists, return it as a single-element list
 			Animal animal = animalOptional.get();
 			AnimalDTO animalDTO = new AnimalDTO(animal);
 			return Collections.singletonList(animalDTO);
