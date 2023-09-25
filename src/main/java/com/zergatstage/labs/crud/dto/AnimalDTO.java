@@ -1,5 +1,6 @@
 package com.zergatstage.labs.crud.dto;
 
+import com.zergatstage.labs.crud.model.Animal;
 import com.zergatstage.labs.crud.model.Commands;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -8,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class AnimalDTO {
-
+    private String animalClass;
     private String animalName;
     private Date dateOfBirth;
     private List<Commands> commands;
@@ -16,13 +17,17 @@ public class AnimalDTO {
     public AnimalDTO() {
     }
 
-    public AnimalDTO(String animalName, Date dateOfBirth, List<Commands> commands) {
-
+    public AnimalDTO(String animalClass, String animalName, Date dateOfBirth, List<Commands> commands) {
+        this.animalClass = animalClass;
         this.animalName = animalName;
         this.dateOfBirth = dateOfBirth;
         this.commands = commands;
     }
-     public String getAnimalName() {
+
+    public AnimalDTO(Animal animal) {
+    }
+
+    public String getAnimalName() {
         return animalName;
     }
 
@@ -44,5 +49,13 @@ public class AnimalDTO {
 
     public void setCommands(List<Commands> commands) {
         this.commands = commands;
+    }
+
+    public String getAnimalClass() {
+        return animalClass;
+    }
+
+    public void setAnimalClass(String animalClass) {
+        this.animalClass = animalClass;
     }
 }

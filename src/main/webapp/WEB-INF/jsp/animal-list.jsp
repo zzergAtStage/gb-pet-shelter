@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Student Management</title>
+    <title>Animal shelter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet"
@@ -97,7 +97,7 @@
       </ul>
 
       <form class="d-flex" role="search" action="/search" method="get">
-          <input class="form-control me-2" type="search" name="id" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" name="id" placeholder="Id" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 
@@ -105,48 +105,50 @@
   </div>
 </nav>
 <main class="container">
-  <div class="bg-light p-5 rounded">
-
-         <div class="container my-2">
-                <div class="card">
-                    <div class="card-body">
-                     <p class="my-5">
+	<div class="bg-light p-5 rounded">
+		<div class="container my-2">
+			<div class="card">
+				<div class="card-body">
+					<p class="my-5">
                         <a href="/registration" class="btn btn-success">
-                        Add User</a>
+                        Add animal</a>
                      </p>
-           <div class="col-md-10">
-            <table class="table table-striped table-responsive-md">
-                <tr>
-                    <th>Id</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Id</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <c:forEach items="${studentList}" var="student">
-                    <tr>
-                        <td>${student.id}</td>
-                        <td>${student.firstName}</td>
-                        <td>${student.lastName}</td>
-                        <td>${student.emailId}</td>
-                        <td>
-                            <a class="btn btn-warning" href="/edit?id=${student.id}" >Edit</a>
-                        </td>
-                        <td>
-                            <form action="/delete?id=${student.id}" method="post">
-                                <input class="btn btn-danger" type="submit" value="Delete" />
-                            </form>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
-              </div>
-            </div>
-          </div>
+					<div class="col-md-10">
+					<table class="table table-striped table-responsive-md">
+						<tr>
+							<th>Id</th>
+							<th>Animal Name</th>
+							<th>Date of Birth</th>
+							<th>Commands</th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+							<c:forEach items="${animalsList}" var="animal">
+								<tr>
+									<td>${animal.id}</td>
+									<td>${animal.animalName}</td>
+									<td>${animal.dateOfBirth}</td>
+									<td>${animal.class}</td>
+									<td>
+                                        <a class="btn btn-Secondary" href="/details?id=${student.id}" >Info</a>
+                                    </td>
+									<td>
+										<a class="btn btn-warning" href="/edit?id=${student.id}" >Edit</a>
+									</td>
+									<td>
+										<form action="/delete?id=${student.id}" method="post">
+											<input class="btn btn-danger" type="submit" value="Delete" />
+										</form>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+				</div>
+			</div>
         </div>
-    </div>
+	</div>
 </main>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

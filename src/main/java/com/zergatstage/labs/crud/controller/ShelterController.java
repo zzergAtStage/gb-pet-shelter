@@ -1,7 +1,7 @@
 package com.zergatstage.labs.crud.controller;
 
-import com.zergatstage.labs.crud.dto.StudentDTO;
-import com.zergatstage.labs.crud.service.StudentService;
+import com.zergatstage.labs.crud.dto.AnimalDTO;
+import com.zergatstage.labs.crud.service.AnimalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,50 +16,50 @@ import java.util.Map;
 
 
 @Controller
-public class StudentController {
+public class ShelterController {
 
 	@Autowired
-	private StudentService studentService;
+	private AnimalsService animalsService;
 
 	@GetMapping(value = "/")
 	public String listing(Model model){
-		List<StudentDTO> studentList = studentService.getAllStudent();
-		model.addAttribute("studentList", studentList);
-		return "student-list";
+		List<AnimalDTO> animalsList = animalsService.getAllAnimal();
+		model.addAttribute("animalsList", animalsList);
+		return "animal-list";
 	}
 	@GetMapping(value = {"/registration"})
 	public String registration(Map<String, Object> model) {
-		model.put("student", new StudentDTO());
-		return "student-add-update";
+		model.put("animal", new AnimalDTO());
+		return "animal-add-update";
 	}
 	
 	@PostMapping("/home")
-	public String createStudent
-			(@ModelAttribute("student") StudentDTO studentDto) {
-		studentService.createOrUpdateStudent(studentDto);
+	public String createAnimal
+			(@ModelAttribute("animal") AnimalDTO animalDto) {
+		animalsService.createOrUpdateAnimal(animalDto);
 		return "redirect:/list";	
 	}
 	
 	@GetMapping("/list")
-	public String listOfStudent(Model model) {
-		List<StudentDTO> studentList = studentService.getAllStudent();
-		model.addAttribute("studentList", studentList);
-		return "student-list";
+	public String listOfAnimal(Model model) {
+		List<AnimalDTO> animalList = animalsService.getAllAnimal();
+		model.addAttribute("animalsList", animalList);
+		return "animal-list";
 	}
 	
 	@PostMapping("/delete")
-	public String deleteStudent(@RequestParam("id") String id) {
-		studentService.deleteStudent(Long.parseLong(id));
+	public String deleteAnimal(@RequestParam("id") String id) {
+		animalsService.deleteAnimal(Long.parseLong(id));
 		return "redirect:/list";		
 	}
 	
 	@GetMapping("/edit")
-	public String editStudent(
+	public String editAnimal(
 			@RequestParam("id") String id, Map<String, Object> model) {
-		StudentDTO studentDTO = studentService
-				.editStudent(Long.parseLong(id));
-		model.put("student", studentDTO);
-		return "student-add-update";
+		AnimalDTO animalDTO = animalsService
+				.editAnimal(Long.parseLong(id));
+		model.put("animal", animalDTO);
+		return "animal-add-update";
 	}
 
 	@GetMapping("/commands")
@@ -71,12 +71,12 @@ public class StudentController {
 	@GetMapping(value = "/search")
 	public String search(@RequestParam("id") long id, Model model) {
 		// Call a method in your service to perform the search
-		List<StudentDTO> searchResults = studentService.getStudentsById(id);
+		List<AnimalDTO> searchResults = animalsService.getAnimalsById(id);
 
 		// Add the search results to the model to display in the JSP
-		model.addAttribute("studentList", searchResults);
+		model.addAttribute("animalsList", searchResults);
 
-		return "student-list"; // Create a new JSP page to display search results
+		return "animal-list"; // Create a new JSP page to display search results
 	}
 	
 }
