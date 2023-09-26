@@ -25,10 +25,9 @@ public class AnimalsServiceImpl implements AnimalsService {
 	
 	public List<AnimalDTO> getAllAnimal() {
 		List<Animal> list = animalRepository.findAll();
-		List<AnimalDTO> userList = list.stream()
+        return list.stream()
 	            .map(AnimalDTO::new)
 	            .collect(Collectors.toCollection(ArrayList::new));
-		return userList;
 	}
 	
 	public void deleteAnimal(Long id) {
