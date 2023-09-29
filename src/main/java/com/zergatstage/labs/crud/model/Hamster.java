@@ -6,7 +6,7 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "animalId")
-public class Humster extends PetAnimal{
+public class Hamster extends PetAnimal{
     @Column(name = "hunger_ratio")
-    private int hungarRatio;
+    private int hungerRatio;
 }

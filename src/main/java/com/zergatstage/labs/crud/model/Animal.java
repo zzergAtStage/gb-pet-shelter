@@ -8,9 +8,11 @@ import java.util.List;
 @Entity
 
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "animal")
 public abstract class Animal {
    @Id
-    protected Integer animalId;
+   @Column(name = "animal_id")
+   protected Integer animalId;
 
    @Column(name = "animal_name")
     private String animalName;
