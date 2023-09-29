@@ -5,51 +5,31 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
 
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Animal {
-   @Id
-    protected Integer animalId;
+public interface Animal {
 
-   @Column(name = "animal_name")
-    private String animalName;
+    /**
+     * Gathers list of commands
+     * @return List of commands or emptyList
+     */
+    public List<Commands> getCommand();
 
-   @Column(name = "date_of_birth")
-    private Date dateOfBirth;
-
-   @ElementCollection
-   private List<Commands> commands;
-    public List<Commands> getCommand() {
-        return commands;
-    }
-
-    public void setCommand(List<Commands> commands) {
-        this.commands = commands;
-    }
+    /**
+     * Stores list of commands to every animal in DB
+     * @param commands List of commands (by default emptyList)
+     */
+    public void setCommand(List<Commands> commands);
 
     //getter & setters
-    public Integer getAnimalId() {
-        return animalId;
-    }
+    public Integer getAnimalId();
 
-    public void setAnimalId(Integer animalId) {
-        this.animalId = animalId;
-    }
+    public void setAnimalId(Integer animalId);
 
-    public String getAnimalName() {
-        return animalName;
-    }
+    public String getAnimalName();
 
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
-    }
+    public void setAnimalName(String animalName);
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+    public Date getDateOfBirth();
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+    public void setDateOfBirth(Date dateOfBirth);
 }
